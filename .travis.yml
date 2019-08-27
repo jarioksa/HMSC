@@ -16,7 +16,7 @@ addons:
     packages:
       - libmagick++-dev
       - libmagick++
-      - libmagickcore
+      - magickcore
 
 r_binary_packages:
   - coda
