@@ -18,6 +18,7 @@ sudo: false
 r_packages:
   - magick
   - animation
+  - phytools
 
 r_binary_packages:
   - coda
@@ -35,7 +36,6 @@ r_binary_packages:
   - nnet
   - pdist
   - pROC
-  - phytools
   - statmod
   - SparseM
   - truncnorm
