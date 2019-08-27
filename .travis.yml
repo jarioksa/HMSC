@@ -4,6 +4,10 @@ cache: packages
 r:
   - release
 
+addons:
+  apt:
+    packages: libmagick++-dev
+
 branches:
   only:
     - master
@@ -27,13 +31,15 @@ r_binary_packages:
   - nnet
   - pdist
   - pROC
-  - magick
   - animation
   - phytools
   - statmod
   - SparseM
   - truncnorm
   
+r_packages:
+  - magick
+
 r_github_packages:
   - jarioksa/BayesLogit-1
 
