@@ -21,6 +21,7 @@ r_binary_packages:
   - R.rsp
   - abind
   - ape
+  - FNN
   - fields
   - ggplot2
   - MASS
@@ -34,6 +35,7 @@ r_binary_packages:
   - animation
   - phytools
   - statmod
+  - SparseM
   - truncnorm
   
 r_github_packages:
