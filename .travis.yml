@@ -15,6 +15,9 @@ branches:
 
 sudo: false
 
+r_packages:
+  - magick
+
 r_binary_packages:
   - coda
   - testthat
@@ -37,9 +40,6 @@ r_binary_packages:
   - SparseM
   - truncnorm
   
-r_packages:
-  - magick
-
 r_github_packages:
   - jarioksa/BayesLogit-1
 
