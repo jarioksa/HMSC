@@ -12,8 +12,11 @@ branches:
 sudo: false
 
 addons:
-  apt: 
-    packages: libmagick++-dev
+  apt:
+    packages:
+      - libmagick++-dev
+      - libmagick++
+      - libmagickcore
 
 r_binary_packages:
   - coda
