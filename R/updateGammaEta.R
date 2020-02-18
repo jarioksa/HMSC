@@ -2,7 +2,7 @@
 
 #' @importFrom methods as
 #' @importFrom stats rnorm
-#' @importFrom Matrix Diagonal sparseMatrix bdiag
+#' @importFrom Matrix Diagonal sparseMatrix bdiag crossprod tcrossprod
 #'
 updateGammaEta = function(Z,Gamma,V,iV,id,Eta,Lambda,Alpha, X,Tr,Pi,dfPi,rL, rLPar,Q,iQ,RQ,U,iU){
    ny = nrow(Z)
