@@ -179,7 +179,8 @@
         if(updaterWarningFlag)
             message("Setting updater$Gamma2=FALSE due to X is not a matrix")
     }
-    if(!identical(updater$GammaEta, FALSE) && (!is.matrix(X))){
+    if(!identical(updater$GammaEta, FALSE) &&
+       (!inherits(X, c("matrix","Matrix")))){
         updater$GammaEta = FALSE
         if(updaterWarningFlag)
             message("Setting updater$GammaEta=FALSE due to X is not a matrix")
