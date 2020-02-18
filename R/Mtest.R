@@ -30,6 +30,8 @@
 #' out
 #' rm(.Random.seed)
 #'
+#' @importFrom Matrix Matrix chol chol2inv
+#' 
 #' @export
 
 `Mtest` <-
@@ -47,8 +49,9 @@
     adaptNf <- rep(transient, hM$nr)
     alignPost <- FALSE
 
-   X1 = hM$XScaled
-   if (hM$ncsel>0){
+   X1 = Matrix(hM$XScaled)
+    if (hM$ncsel>0){
+        stop("ncsel not yet implemented")
       if(is.matrix(X1)){
          X2=X1
          X1=list()
@@ -58,22 +61,23 @@
       }
    }
 
-   Tr = hM$TrScaled
-   Y = hM$YScaled
+   Tr = Matrix(hM$TrScaled)
+   Y = Matrix(hM$YScaled)
    distr = hM$distr
-   Pi = hM$Pi
+   Pi = Matrix(hM$Pi)
    dfPi = hM$dfPi
-   C = hM$C
+   C = Matrix(hM$C)
    nr = hM$nr
 
-   mGamma = hM$mGamma
-   iUGamma = chol2inv(chol(hM$UGamma))
-   V0 = hM$V0
+   mGamma = Matrix(hM$mGamma)
+   iUGamma = chol2inv(chol(Matrix(hM$UGamma)))
+   V0 = Matrix(hM$V0)
    f0 = hM$f0
    aSigma = hM$aSigma
    bSigma = hM$bSigma
    rhopw = hM$rhopw
 
+    ## dataParList elements are 3-dim arrays that are unknown to Matrix
    if(is.null(dataParList))
       dataParList = computeDataParameters(hM)
    Qg = dataParList$Qg
@@ -124,25 +128,25 @@
     set.seed(initSeed[chain])
     parList = computeInitialParameters(hM, initPar)
 
-    Gamma = parList$Gamma
-    V = parList$V
+    Gamma = Matrix(parList$Gamma)
+    V = Matrix(parList$V)
     iV = chol2inv(chol(V))
-    Beta = parList$Beta
-    BetaSel = parList$BetaSel
-    PsiRRR = parList$PsiRRR
-    DeltaRRR = parList$DeltaRRR
-    wRRR = parList$wRRR
-    sigma = parList$sigma
+    Beta = Matrix(parList$Beta) 
+    BetaSel = parList$BetaSel # Matrix not implemented (no test case yet)
+    PsiRRR = parList$PsiRRR # ditto
+    DeltaRRR = parList$DeltaRRR # ditto
+    wRRR = parList$wRRR # ditto
+    sigma = parList$sigma # vector
     iSigma = 1 / sigma
-    Lambda = parList$Lambda
-    Eta = parList$Eta
-    Alpha = parList$Alpha
-    Psi = parList$Psi
-    Delta = parList$Delta
-    rho = parList$rho
-    Z = parList$Z
+    Lambda = parList$Lambda # a list
+    Eta = parList$Eta # a list
+    Alpha = parList$Alpha # a list
+    Psi = parList$Psi # a list
+    Delta = parList$Delta # a list
+    rho = parList$rho # a scalar
+    Z = Matrix(parList$Z) 
 
-    X1A = X1
+    X1A = Matrix(X1)
 
     if(hM$ncsel>0){
         for (i in 1:hM$ncsel){
