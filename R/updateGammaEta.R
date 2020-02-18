@@ -72,7 +72,8 @@ updateGammaEta = function(Z,Gamma,V,iV,id,Eta,Lambda,Alpha, X,Tr,Pi,dfPi,rL, rLP
                S1 = S - X%*%Beta
                me = tcrossprod(S1,LamiD) %*% iW0
                EtaNew[[r]] = matrix(NA,ny,nf)
-               EtaNew[[r]][lPi,] = me + t(backsolve(RW0,matrix(rnorm(ny*nf),nf,ny)))
+               ## temporary dirty kluge to Matrix/matrix conflict
+               EtaNew[[r]][lPi,] = as.matrix(me + t(backsolve(RW0,matrix(rnorm(ny*nf),nf,ny))))
             } else{ # non-observation-corresponding LF
                P = sparseMatrix(i=1:ny,j=lPi)
                PtX = Matrix::crossprod(P, X)

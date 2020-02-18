@@ -31,7 +31,7 @@
 #' rm(.Random.seed)
 #'
 #' @importFrom Matrix Matrix chol chol2inv
-#' 
+#'
 #' @export
 
 `Mtest` <-
@@ -66,7 +66,9 @@
    distr = hM$distr
    Pi = Matrix(hM$Pi)
    dfPi = hM$dfPi
-   C = Matrix(hM$C)
+   C = hM$C
+   if (!is.null(C))
+       C <- Matrix(C)
    nr = hM$nr
 
    mGamma = Matrix(hM$mGamma)
@@ -131,7 +133,7 @@
     Gamma = Matrix(parList$Gamma)
     V = Matrix(parList$V)
     iV = chol2inv(chol(V))
-    Beta = Matrix(parList$Beta) 
+    Beta = Matrix(parList$Beta)
     BetaSel = parList$BetaSel # Matrix not implemented (no test case yet)
     PsiRRR = parList$PsiRRR # ditto
     DeltaRRR = parList$DeltaRRR # ditto
@@ -144,7 +146,7 @@
     Psi = parList$Psi # a list
     Delta = parList$Delta # a list
     rho = parList$rho # a scalar
-    Z = Matrix(parList$Z) 
+    Z = Matrix(parList$Z)
 
     X1A = Matrix(X1)
 
