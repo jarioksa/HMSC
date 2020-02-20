@@ -176,7 +176,8 @@
         }
     }
 
-    if(!identical(updater$Gamma2, FALSE) && (!is.matrix(X))){
+    if(!identical(updater$Gamma2, FALSE) &&
+       (!inherits(X, c("matrix","Matrix")))){
         updater$Gamma2 = FALSE
         if(updaterWarningFlag)
             message("Setting updater$Gamma2=FALSE due to X is not a matrix")
